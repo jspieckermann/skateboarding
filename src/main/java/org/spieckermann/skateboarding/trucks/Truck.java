@@ -3,9 +3,15 @@ package org.spieckermann.skateboarding.trucks;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.spieckermann.skateboarding.company.Company;
 
+@Table(
+	    uniqueConstraints=
+	        @UniqueConstraint(columnNames={"company", "name", "size"})
+	)
 @Entity
 public class Truck {
 	
