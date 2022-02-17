@@ -11,8 +11,12 @@ public class TruckService {
 	@Autowired
 	private TruckRepository repository;
 	
-	public List<Truck> getAllTrucks() {
+	public List<Truck> getTrucks() {		
 		return repository.findAll();
+	}
+	
+	public List<Truck> getTrucks(double width) {
+		return repository.findByWidth(width);
 	}
 	
 	public Truck getTruck(Long id) {
@@ -24,6 +28,7 @@ public class TruckService {
 	}
 	
 	public Truck updateTruck(Long id, Truck truck) {
+		
 		return repository.save(repository.findById(id).map(myTruck -> {
 			myTruck.setCompany(truck.getCompany());
 			myTruck.setName(truck.getName());

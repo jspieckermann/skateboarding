@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,8 +19,8 @@ public class TruckController {
 	private TruckService service;
 	
 	@GetMapping("/trucks")
-	List<Truck> getTrucks() {
-		return service.getAllTrucks();
+	List<Truck> getTrucks(@RequestParam(required = false) String width) {
+		return width == null ? service.getTrucks() : service.getTrucks(Double.parseDouble(width));
 	}
 	
 	@GetMapping("/trucks/{id}")
