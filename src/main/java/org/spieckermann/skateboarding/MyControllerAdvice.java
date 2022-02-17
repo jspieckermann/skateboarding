@@ -1,6 +1,7 @@
 package org.spieckermann.skateboarding;
 
 import org.spieckermann.skateboarding.trucks.TruckNotFoundException;
+import org.spieckermann.skateboarding.wheels.WheelNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,5 +18,11 @@ public class MyControllerAdvice {
 		return exception.getMessage();
 	}
 	
+	@ResponseBody
+	@ExceptionHandler(WheelNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	String wheelNotFoundHandler(WheelNotFoundException exception) {
+		return exception.getMessage();
+	}
 
 }

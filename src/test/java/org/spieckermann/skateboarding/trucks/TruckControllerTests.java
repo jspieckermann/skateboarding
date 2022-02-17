@@ -43,11 +43,6 @@ public class TruckControllerTests {
 	Truck truck1 = new Truck(Company.THUNDER, "Titanium Lights", 147, 8.0, 49, 288);
 	Truck truck2 = new Truck(Company.THUNDER, "Titanium Lights", 148, 8.25, 52, 308);
 
-	@BeforeEach
-	public void setup() {
-		JacksonTester.initFields(this, new ObjectMapper());
-	}
-
 	@Test
 	public void testGetTrucks() throws Exception {
 
@@ -67,24 +62,7 @@ public class TruckControllerTests {
 		mockMvc.perform(get("/trucks")).andExpect(status().isOk()).andExpect(jsonPath("$", Matchers.hasSize(0)));
 
 		verify(truckService, times(2)).getTrucks();
-	}
-	
-	
-	@Test
-	public void testGetTrucksByWidth() throws Exception {
-
-		List<Truck> trucks = Arrays.asList(truck1, truck2);
-
-		Mockito.when(truckService.getTrucks()).thenReturn(trucks);
-
-		mockMvc.perform(get("/trucks")).andExpect(status().isOk()).andExpect(jsonPath("$", Matchers.hasSize(2)))
-				.andExpect(jsonPath("$[0].size", Matchers.is(147))).andExpect(jsonPath("$[1].size", Matchers.is(148)));
-
-		Mockito.when(truckService.getTrucks()).thenReturn(Arrays.asList());
-
-		mockMvc.perform(get("/trucks")).andExpect(status().isOk()).andExpect(jsonPath("$", Matchers.hasSize(0)));
-
-		verify(truckService, times(2)).getTrucks();
+		verify(truckService, times(1)).getTrucks(8.0);
 	}
 
 	@Test
