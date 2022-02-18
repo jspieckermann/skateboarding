@@ -35,6 +35,7 @@ public class DeckService {
 			myDeck.setWidth(deck.getWidth());
 			myDeck.setLength(deck.getLength());
 			myDeck.setWheelbase(deck.getWheelbase());
+			myDeck.setConcave(deck.getConcave());
 			myDeck.setNose(deck.getNose());
 			myDeck.setTail(deck.getTail());
 			myDeck.setWeight(deck.getWeight());
