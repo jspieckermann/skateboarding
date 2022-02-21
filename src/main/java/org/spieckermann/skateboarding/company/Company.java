@@ -12,6 +12,8 @@ public enum Company {
 	BAKER,
 	REAL,
 	DEATHWISH,
-	ANTIHERO
+	ANTIHERO,
+	BRONSON,
+	ANTIX
 
 }

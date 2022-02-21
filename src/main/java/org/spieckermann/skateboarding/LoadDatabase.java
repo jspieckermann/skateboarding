@@ -9,6 +9,9 @@ import org.spieckermann.skateboarding.company.Company;
 import org.spieckermann.skateboarding.decks.Concave;
 import org.spieckermann.skateboarding.decks.Deck;
 import org.spieckermann.skateboarding.decks.DeckRepository;
+import org.spieckermann.skateboarding.hardware.Hardware;
+import org.spieckermann.skateboarding.hardware.HardwareRepository;
+import org.spieckermann.skateboarding.hardware.Head;
 import org.spieckermann.skateboarding.trucks.Truck;
 import org.spieckermann.skateboarding.trucks.TruckRepository;
 import org.spieckermann.skateboarding.wheels.Wheel;
@@ -25,7 +28,7 @@ public class LoadDatabase {
 	
 	@Bean
 	CommandLineRunner
-	initDatabase(TruckRepository truckRepo, WheelRepository wheelRepo, DeckRepository deckRepo) {
+	initDatabase(TruckRepository truckRepo, WheelRepository wheelRepo, DeckRepository deckRepo, HardwareRepository hwRepo) {
 		return args -> {
 			LOG.info("Start preloading database");
 			List<Truck> trucks = getTrucks();
@@ -39,6 +42,10 @@ public class LoadDatabase {
 			List<Deck> decks = getDecks();
 			for (Deck deck : decks) {
 				deckRepo.save(deck);
+			}
+			List<Hardware> hardwareList = getHardware();
+			for (Hardware hardware : hardwareList) {
+				hwRepo.save(hardware);
 			}
 			LOG.info("Finsihed preloading database");
 		};
@@ -63,6 +70,13 @@ public class LoadDatabase {
 		decks.add(new Deck(Company.BAKER, "Zach Goon Wall", 8.25, 31.875, 14.25, Concave.MELLOW, 7, 6.5, 1200));
 		decks.add(new Deck(Company.BAKER, "Team Brand Logo", 8.475, 31.9, 14.25, Concave.MEDIUM, 7, 6.5, 1300));
 		return decks;
+	}
+	
+	private static List<Hardware> getHardware() {
+		List<Hardware> hardware = new ArrayList<Hardware>();
+		hardware.add(new Hardware(Company.ANTIX, "Standards", Head.ALLEN, 1.0, 42));
+		hardware.add(new Hardware(Company.ANTIX, "Standards", Head.PHILIPS, 1.0, 42));
+		return hardware;
 	}
 	
 	
