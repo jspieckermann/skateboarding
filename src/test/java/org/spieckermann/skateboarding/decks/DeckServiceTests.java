@@ -87,6 +87,7 @@ public class DeckServiceTests {
 		verify(deck, times(1)).setNose(7.0);
 		verify(deck, times(1)).setTail(6.5);
 		verify(deck, times(1)).setWeight(1200);
+		verify(deck, times(1)).setPrice(89);
 		verify(repository, times(1)).save(deck);
 	}
 	

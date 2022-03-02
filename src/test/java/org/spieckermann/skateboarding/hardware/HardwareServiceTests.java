@@ -82,6 +82,7 @@ public class HardwareServiceTests {
 		verify(hardware, times(1)).setHead(Head.ALLEN);
 		verify(hardware, times(1)).setLength(1.0);
 		verify(hardware, times(1)).setWeight(42);
+		verify(hardware, times(1)).setPrice(7.5);
 		verify(repository, times(1)).save(hardware);
 	}
 	

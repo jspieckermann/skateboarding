@@ -85,6 +85,7 @@ public class WheelServiceTests {
 		verify(wheel, times(1)).setRidingSurface(21.5);
 		verify(wheel, times(1)).setDuro("99");
 		verify(wheel, times(1)).setWeight(225);
+		verify(wheel, times(1)).setPrice(59);
 		verify(repository, times(1)).save(wheel);
 	}
 	

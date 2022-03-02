@@ -1,6 +1,7 @@
 package org.spieckermann.skateboarding;
 
 import org.spieckermann.skateboarding.decks.DeckNotFoundException;
+import org.spieckermann.skateboarding.griptape.GriptapeNotFoundException;
 import org.spieckermann.skateboarding.hardware.HardwareNotFoundException;
 import org.spieckermann.skateboarding.trucks.TruckNotFoundException;
 import org.spieckermann.skateboarding.wheels.WheelNotFoundException;
@@ -38,6 +39,13 @@ public class MyControllerAdvice {
 	@ExceptionHandler(HardwareNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	String hardwareNotFoundHandler(HardwareNotFoundException exception) {
+		return exception.getMessage();
+	}
+	
+	@ResponseBody
+	@ExceptionHandler(GriptapeNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	String griptapeNotFoundHandler(GriptapeNotFoundException exception) {
 		return exception.getMessage();
 	}
 

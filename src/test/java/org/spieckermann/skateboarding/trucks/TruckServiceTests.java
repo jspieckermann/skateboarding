@@ -84,6 +84,7 @@ public class TruckServiceTests {
 		verify(truck, times(1)).setWidth(8.0);
 		verify(truck, times(1)).setHeight(49);
 		verify(truck, times(1)).setWeight(288);
+		verify(truck, times(1)).setPrice(129);
 		verify(repository, times(1)).save(truck);
 	}
 	

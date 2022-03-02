@@ -9,6 +9,8 @@ import org.spieckermann.skateboarding.company.Company;
 import org.spieckermann.skateboarding.decks.Concave;
 import org.spieckermann.skateboarding.decks.Deck;
 import org.spieckermann.skateboarding.decks.DeckRepository;
+import org.spieckermann.skateboarding.griptape.Griptape;
+import org.spieckermann.skateboarding.griptape.GriptapeRepository;
 import org.spieckermann.skateboarding.hardware.Hardware;
 import org.spieckermann.skateboarding.hardware.HardwareRepository;
 import org.spieckermann.skateboarding.hardware.Head;
@@ -28,7 +30,7 @@ public class LoadDatabase {
 	
 	@Bean
 	CommandLineRunner
-	initDatabase(TruckRepository truckRepo, WheelRepository wheelRepo, DeckRepository deckRepo, HardwareRepository hwRepo) {
+	initDatabase(TruckRepository truckRepo, WheelRepository wheelRepo, DeckRepository deckRepo, HardwareRepository hwRepo, GriptapeRepository griptapeRepo) {
 		return args -> {
 			LOG.info("Start preloading database");
 			List<Truck> trucks = getTrucks();
@@ -46,6 +48,10 @@ public class LoadDatabase {
 			List<Hardware> hardwareList = getHardware();
 			for (Hardware hardware : hardwareList) {
 				hwRepo.save(hardware);
+			}
+			List<Griptape> griptapeList = getGriptape();
+			for (Griptape griptape : griptapeList) {
+				griptapeRepo.save(griptape);
 			}
 			LOG.info("Finsihed preloading database");
 		};
@@ -77,6 +83,13 @@ public class LoadDatabase {
 		hardware.add(new Hardware(Company.ANTIX, "Standards", Head.ALLEN, 1.0, 42, 7.5));
 		hardware.add(new Hardware(Company.ANTIX, "Standards", Head.PHILIPS, 1.0, 42, 7.5));
 		return hardware;
+	}
+	
+	private static List<Griptape> getGriptape() {
+		List<Griptape> griptape = new ArrayList<Griptape>();
+		griptape.add(new Griptape(Company.GRIZZLY, "Santiago Signature Stamp", 33, 9, 34, 11));
+		griptape.add(new Griptape(Company.GRIZZLY, "Pudwill Signature Stamp", 33, 9, 34, 11));
+		return griptape;
 	}
 	
 	
