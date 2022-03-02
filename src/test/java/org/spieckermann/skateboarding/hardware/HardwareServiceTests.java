@@ -73,7 +73,7 @@ public class HardwareServiceTests {
 	
 	@Test
 	public void testUpdateHardware() {
-		Hardware myHardware = new Hardware(Company.ANTIX, "Standards", Head.ALLEN, 1.0, 42);
+		Hardware myHardware = new Hardware(Company.ANTIX, "Standards", Head.ALLEN, 1.0, 42, 7.5);
 		when(repository.findById(1L)).thenReturn(Optional.of(hardware));
 		sut.updateHardware(1L, myHardware);
 		verify(repository, times(1)).findById(1L);

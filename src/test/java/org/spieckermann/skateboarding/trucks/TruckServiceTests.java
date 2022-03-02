@@ -73,7 +73,7 @@ public class TruckServiceTests {
 	
 	@Test
 	public void testUpdateTruck() {
-		Truck myTruck = new Truck(Company.THUNDER, "Titanium Lights", 147, 8.0, 49, 288);
+		Truck myTruck = new Truck(Company.THUNDER, "Titanium Lights", 147, 8.0, 49, 288, 129);
 		
 		when(repository.findById(1L)).thenReturn(Optional.of(truck));
 		sut.updateTruck(1L, myTruck);

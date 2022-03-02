@@ -37,6 +37,7 @@ public class WheelService {
 			myWheel.setRidingSurface(wheel.getRidingSurface());
 			myWheel.setDuro(wheel.getDuro());
 			myWheel.setWidth(wheel.getWidth());
+			myWheel.setPrice(wheel.getPrice());
 			return myWheel;
 		}).orElseThrow(() -> new WheelNotFoundException(id)));
 	}

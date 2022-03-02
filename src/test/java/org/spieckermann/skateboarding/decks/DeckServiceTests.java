@@ -73,7 +73,7 @@ public class DeckServiceTests {
 	
 	@Test
 	public void testUpdateDeck() {
-		Deck myDeck = new Deck(Company.BAKER, "Zach Goon Wall", 8.25, 31.875, 14.25, Concave.MELLOW, 7, 6.5, 1200);
+		Deck myDeck = new Deck(Company.BAKER, "Zach Goon Wall", 8.25, 31.875, 14.25, Concave.MELLOW, 7, 6.5, 1200, 89);
 		
 		when(repository.findById(1L)).thenReturn(Optional.of(deck));
 		sut.updateDeck(1L, myDeck);

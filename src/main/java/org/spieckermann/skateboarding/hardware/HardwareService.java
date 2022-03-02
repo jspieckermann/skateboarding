@@ -34,6 +34,7 @@ public class HardwareService {
 			myHardware.setHead(hardware.getHead());
 			myHardware.setLength(hardware.getLength());
 			myHardware.setWeight(hardware.getWeight());
+			myHardware.setPrice(hardware.getPrice());
 			return myHardware;
 		}).orElseThrow(() -> new HardwareNotFoundException(id)));
 	}

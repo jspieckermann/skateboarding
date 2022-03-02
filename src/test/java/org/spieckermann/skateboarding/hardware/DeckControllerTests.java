@@ -38,8 +38,8 @@ public class DeckControllerTests {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 
-	Hardware hw1 = new Hardware(Company.ANTIX, "Standards", Head.ALLEN, 1.0, 42);
-	Hardware hw2 = new Hardware(Company.ANTIX, "Standards", Head.PHILIPS, 1.0, 42);
+	Hardware hw1 = new Hardware(Company.ANTIX, "Standards", Head.ALLEN, 1.0, 42, 7.5);
+	Hardware hw2 = new Hardware(Company.ANTIX, "Standards", Head.PHILIPS, 1.0, 42, 7.5);
 
 	@Test
 	public void testGetHardwareList() throws Exception {

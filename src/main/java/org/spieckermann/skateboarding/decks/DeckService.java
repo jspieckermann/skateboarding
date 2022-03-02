@@ -39,6 +39,7 @@ public class DeckService {
 			myDeck.setNose(deck.getNose());
 			myDeck.setTail(deck.getTail());
 			myDeck.setWeight(deck.getWeight());
+			myDeck.setPrice(deck.getPrice());
 			return myDeck;
 		}).orElseThrow(() -> new DeckNotFoundException(id)));
 	}

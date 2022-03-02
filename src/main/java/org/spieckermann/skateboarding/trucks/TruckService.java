@@ -36,6 +36,7 @@ public class TruckService {
 			myTruck.setWeight(truck.getWeight());
 			myTruck.setHeight(truck.getHeight());
 			myTruck.setWidth(truck.getWidth());
+			myTruck.setPrice(truck.getPrice());
 			return myTruck;
 		}).orElseThrow(() -> new TruckNotFoundException(id)));
 	}

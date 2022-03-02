@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.spieckermann.skateboarding.BaseEntity;
 import org.spieckermann.skateboarding.company.Company;
 
 @Table(
@@ -13,64 +14,36 @@ import org.spieckermann.skateboarding.company.Company;
 	        @UniqueConstraint(columnNames={"company", "name", "size", "duro"})
 	)
 @Entity
-public class Wheel {
+public class Wheel extends BaseEntity {
 	
-	private @Id @GeneratedValue Long id;
-	private Company company;
-	private String name;
 	private int size;
 	private double width;
 	private double ridingSurface;
 	private String duro;
-	private int weight;
+
+	/**
+	 * Default constructor.
+	 */
+	public Wheel() { }
 	
-	public Wheel() {
-		// do nothing
-	}
-	
-	public Wheel(Company company, String name, int size, double width, double ridingSurface, String duro, int weight) {
-		setCompany(company);
-		setName(name);
+	/**
+	 * Constructor.
+	 * 
+	 * @param company
+	 * @param name
+	 * @param size
+	 * @param width (inch)
+	 * @param ridingSurface (mm)
+	 * @param duro
+	 * @param weight ({@link BaseEntity})
+	 * @param price ({@link BaseEntity})
+	 */
+	public Wheel(Company company, String name, int size, double width, double ridingSurface, String duro, int weight, double price) {
+		super(company, name, weight, price);
 		setSize(size);
 		setWidth(width);
 		setRidingSurface(ridingSurface);
 		setDuro(duro);
-		setWeight(weight);
-	}
-	
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
-	
-	/**
-	 * @return the company
-	 */
-	public Company getCompany() {
-		return company;
-	}
-	
-	/**
-	 * @param company the company to set
-	 */
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	/**
@@ -121,24 +94,12 @@ public class Wheel {
 	public String getDuro() {
 		return duro;
 	}
+	
 	/**
 	 * @param duro the durometer to set
 	 */
 	public void setDuro(String duro) {
 		this.duro = duro;
 	}
-	/**
-	 * @return the weight (gram)
-	 */
-	public int getWeight() {
-		return weight;
-	}
-	/**
-	 * @param weight the weight (gram) to set
-	 */
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
-
 
 }

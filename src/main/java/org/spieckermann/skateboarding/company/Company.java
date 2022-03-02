@@ -14,6 +14,9 @@ public enum Company {
 	DEATHWISH,
 	ANTIHERO,
 	BRONSON,
-	ANTIX
+	ANTIX,
+	MOB,
+	JESSUP,
+	GRIZZLY
 
 }

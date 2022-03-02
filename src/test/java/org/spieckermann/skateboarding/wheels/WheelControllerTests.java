@@ -38,8 +38,8 @@ public class WheelControllerTests {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 
-	Wheel wheel1 = new Wheel(Company.SPITFIRE, "F4 Conical Full", 53, 33.5, 21.5, "99", 225);
-	Wheel wheel2 = new Wheel(Company.SPITFIRE, "F4 Conical Full", 52, 32.5, 21, "101", 220);
+	Wheel wheel1 = new Wheel(Company.SPITFIRE, "F4 Conical Full", 53, 33.5, 21.5, "99", 225, 59);
+	Wheel wheel2 = new Wheel(Company.SPITFIRE, "F4 Conical Full", 52, 32.5, 21, "101", 220, 59);
 
 	@Test
 	public void testGetWheels() throws Exception {

@@ -1,11 +1,10 @@
 package org.spieckermann.skateboarding.decks;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.spieckermann.skateboarding.BaseEntity;
 import org.spieckermann.skateboarding.company.Company;
 
 @Table(
@@ -13,68 +12,42 @@ import org.spieckermann.skateboarding.company.Company;
 	        @UniqueConstraint(columnNames={"company", "name", "width"})
 	)
 @Entity
-public class Deck {
+public class Deck extends BaseEntity {
 	
-	private @Id @GeneratedValue Long id;
-	private Company company;
-	private String name;
 	private double width;
 	private double length;
 	private double wheelbase;
 	private Concave concave;
 	private double nose;
 	private double tail;
-	private int weight;
 	
-	public Deck() {
-		// do nothing
-	}
+	/**
+	 * Default constructor.
+	 */
+	public Deck() { }
 	
-	public Deck(Company company, String name, double width, double length, double wheelbase, Concave concave, double nose, double tail, int weight) {
-		setCompany(company);
-		setName(name);
+	/**
+	 * Constructor.
+	 * 
+	 * @param company
+	 * @param name
+	 * @param width (inch)
+	 * @param length (inch)
+	 * @param wheelbase (inch)
+	 * @param concave
+	 * @param nose (inch)
+	 * @param tail (inch)
+	 * @param weight ({@link BaseEntity})
+	 * @param price ({@link BaseEntity})
+	 */
+	public Deck(Company company, String name, double width, double length, double wheelbase, Concave concave, double nose, double tail, int weight, double price) {
+		super(company, name, weight, price);
 		setWidth(width);
 		setLength(length);
 		setWheelbase(wheelbase);
 		setConcave(concave);
 		setNose(nose);
 		setTail(tail);
-		setWeight(weight);
-	}
-	
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
-	
-	/**
-	 * @return the company
-	 */
-	public Company getCompany() {
-		return company;
-	}
-	
-	/**
-	 * @param company the company to set
-	 */
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -89,20 +62,6 @@ public class Deck {
 	 */
 	public void setWidth(double width) {
 		this.width = width;
-	}
-
-	/**
-	 * @return the weight (gram)
-	 */
-	public int getWeight() {
-		return weight;
-	}
-	
-	/**
-	 * @param weight the weight (gram) to set
-	 */
-	public void setWeight(int weight) {
-		this.weight = weight;
 	}
 	
 	/**

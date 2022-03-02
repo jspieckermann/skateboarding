@@ -73,7 +73,7 @@ public class WheelServiceTests {
 	
 	@Test
 	public void testUpdateWheel() {
-		Wheel myWheel = new Wheel(Company.SPITFIRE, "F4 Conical Full", 53, 33.5, 21.5, "99", 225);
+		Wheel myWheel = new Wheel(Company.SPITFIRE, "F4 Conical Full", 53, 33.5, 21.5, "99", 225, 59);
 		
 		when(repository.findById(1L)).thenReturn(Optional.of(wheel));
 		sut.updateWheel(1L, myWheel);

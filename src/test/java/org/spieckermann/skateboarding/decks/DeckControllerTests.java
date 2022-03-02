@@ -38,8 +38,8 @@ public class DeckControllerTests {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 
-	Deck deck1 = new Deck(Company.BAKER, "Zach Goon Wall", 8.25, 31.875, 14.25, Concave.MELLOW, 7, 6.5, 1200);
-	Deck deck2 = new Deck(Company.BAKER, "Team Brand Logo", 8.475, 31.9, 14.25, Concave.MEDIUM, 7, 6.5, 1300);
+	Deck deck1 = new Deck(Company.BAKER, "Zach Goon Wall", 8.25, 31.875, 14.25, Concave.MELLOW, 7, 6.5, 1200, 89);
+	Deck deck2 = new Deck(Company.BAKER, "Team Brand Logo", 8.475, 31.9, 14.25, Concave.MEDIUM, 7, 6.5, 1300, 85);
 
 	@Test
 	public void testGetDecks() throws Exception {

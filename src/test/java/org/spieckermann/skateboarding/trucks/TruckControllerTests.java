@@ -40,8 +40,8 @@ public class TruckControllerTests {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 
-	Truck truck1 = new Truck(Company.THUNDER, "Titanium Lights", 147, 8.0, 49, 288);
-	Truck truck2 = new Truck(Company.THUNDER, "Titanium Lights", 148, 8.25, 52, 308);
+	Truck truck1 = new Truck(Company.THUNDER, "Titanium Lights", 147, 8.0, 49, 288, 129);
+	Truck truck2 = new Truck(Company.THUNDER, "Titanium Lights", 148, 8.25, 52, 308, 129);
 
 	@Test
 	public void testGetTrucks() throws Exception {
