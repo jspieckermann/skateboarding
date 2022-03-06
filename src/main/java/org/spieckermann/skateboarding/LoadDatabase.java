@@ -6,6 +6,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spieckermann.skateboarding.company.Company;
+import org.spieckermann.skateboarding.completes.Complete;
+import org.spieckermann.skateboarding.completes.CompleteRepository;
 import org.spieckermann.skateboarding.decks.Concave;
 import org.spieckermann.skateboarding.decks.Deck;
 import org.spieckermann.skateboarding.decks.DeckRepository;
@@ -30,7 +32,7 @@ public class LoadDatabase {
 	
 	@Bean
 	CommandLineRunner
-	initDatabase(TruckRepository truckRepo, WheelRepository wheelRepo, DeckRepository deckRepo, HardwareRepository hwRepo, GriptapeRepository griptapeRepo) {
+	initDatabase(TruckRepository truckRepo, WheelRepository wheelRepo, DeckRepository deckRepo, HardwareRepository hwRepo, GriptapeRepository griptapeRepo, CompleteRepository completeRepo) {
 		return args -> {
 			LOG.info("Start preloading database");
 			List<Truck> trucks = getTrucks();
@@ -53,6 +55,15 @@ public class LoadDatabase {
 			for (Griptape griptape : griptapeList) {
 				griptapeRepo.save(griptape);
 			}
+			
+
+			completeRepo.save(new Complete(deckRepo.findAll().get(0), truckRepo.findAll().get(0),
+					wheelRepo.findAll().get(0), griptapeRepo.findAll().get(0), hwRepo.findAll().get(0)));
+			completeRepo.save(new Complete(deckRepo.findAll().get(1), truckRepo.findAll().get(1),
+					wheelRepo.findAll().get(1), griptapeRepo.findAll().get(1), hwRepo.findAll().get(1)));
+			completeRepo.save(new Complete(deckRepo.findAll().get(0), truckRepo.findAll().get(1),
+					wheelRepo.findAll().get(0), griptapeRepo.findAll().get(1), hwRepo.findAll().get(0)));
+	
 			LOG.info("Finsihed preloading database");
 		};
 	}
@@ -90,8 +101,6 @@ public class LoadDatabase {
 		griptape.add(new Griptape(Company.GRIZZLY, "Santiago Signature Stamp", 33, 9, 34, 11));
 		griptape.add(new Griptape(Company.GRIZZLY, "Pudwill Signature Stamp", 33, 9, 34, 11));
 		return griptape;
-	}
-	
-	
+	}	
 
 }
