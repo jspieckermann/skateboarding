@@ -109,7 +109,7 @@ public class DeckControllerTests {
 	public void testUpdateDeck() throws Exception {
 
 		Mockito.when(deckService.updateDeck(Mockito.eq(2L), Mockito.any(Deck.class)))
-				.thenThrow(new DeckNotFoundException(1L));
+				.thenThrow(new DeckNotFoundException(2L));
 
 		mockMvc.perform(
 				put("/decks/1").contentType("application/json").content(objectMapper.writeValueAsString(deck1)))

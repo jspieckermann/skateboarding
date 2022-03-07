@@ -1,5 +1,6 @@
 package org.spieckermann.skateboarding;
 
+import org.spieckermann.skateboarding.completes.CompleteNotFoundException;
 import org.spieckermann.skateboarding.decks.DeckNotFoundException;
 import org.spieckermann.skateboarding.griptape.GriptapeNotFoundException;
 import org.spieckermann.skateboarding.hardware.HardwareNotFoundException;
@@ -49,4 +50,10 @@ public class MyControllerAdvice {
 		return exception.getMessage();
 	}
 
+	@ResponseBody
+	@ExceptionHandler(CompleteNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	String completeNotFoundHandler(CompleteNotFoundException exception) {
+		return exception.getMessage();
+	}
 }

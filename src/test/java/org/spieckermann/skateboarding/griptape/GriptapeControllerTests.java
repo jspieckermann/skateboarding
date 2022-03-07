@@ -105,7 +105,7 @@ public class GriptapeControllerTests {
 	public void testUpdateGriptape() throws Exception {
 
 		Mockito.when(griptapeService.updateGriptape(Mockito.eq(2L), Mockito.any(Griptape.class)))
-				.thenThrow(new GriptapeNotFoundException(1L));
+				.thenThrow(new GriptapeNotFoundException(2L));
 
 		mockMvc.perform(
 				put("/griptape/1").contentType("application/json").content(objectMapper.writeValueAsString(grip1)))

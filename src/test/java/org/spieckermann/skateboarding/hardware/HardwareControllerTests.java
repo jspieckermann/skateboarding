@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(HardwareController.class)
-public class DeckControllerTests {
+public class HardwareControllerTests {
 
 	@MockBean
 	HardwareService hardwareService;
@@ -109,7 +109,7 @@ public class DeckControllerTests {
 	public void testUpdateDeck() throws Exception {
 
 		Mockito.when(hardwareService.updateHardware(Mockito.eq(2L), Mockito.any(Hardware.class)))
-				.thenThrow(new HardwareNotFoundException(1L));
+				.thenThrow(new HardwareNotFoundException(2L));
 
 		mockMvc.perform(
 				put("/hardware/1").contentType("application/json").content(objectMapper.writeValueAsString(hw1)))

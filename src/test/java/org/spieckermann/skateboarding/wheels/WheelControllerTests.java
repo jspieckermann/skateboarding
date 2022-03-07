@@ -109,7 +109,7 @@ public class WheelControllerTests {
 	public void testUpdateWheel() throws Exception {
 
 		Mockito.when(wheelService.updateWheel(Mockito.eq(2L), Mockito.any(Wheel.class)))
-				.thenThrow(new WheelNotFoundException(1L));
+				.thenThrow(new WheelNotFoundException(2L));
 
 		mockMvc.perform(
 				put("/wheels/1").contentType("application/json").content(objectMapper.writeValueAsString(wheel1)))

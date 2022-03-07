@@ -109,7 +109,7 @@ public class TruckControllerTests {
 	public void testUpdateTruck() throws Exception {
 
 		Mockito.when(truckService.updateTruck(Mockito.eq(2L), Mockito.any(Truck.class)))
-				.thenThrow(new TruckNotFoundException(1L));
+				.thenThrow(new TruckNotFoundException(2L));
 
 		mockMvc.perform(
 				put("/trucks/1").contentType("application/json").content(objectMapper.writeValueAsString(truck1)))
